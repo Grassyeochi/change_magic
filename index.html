@@ -29,8 +29,14 @@
     <!-- 이미지 B -->
     <img src="reverse_jh.jpg" alt="reverse" class="image" id="reverse_image">
 
-    <p><button id ="resetButton" onclick="resetVisitedStatus()>초기화</buttom></p>
+    <button id ="resetButton" onclick="resetVisitedStatus()>초기화</button>
   <script>
+        function resetVisitedStatus() {
+            localStorage.setItem('visitedBefore', 'false');
+            alert('초기화되었습니다.');
+            location.reload();
+        }
+        
         function showImage(imageId) {
             var images = document.getElementsByClassName('image');
             for (var i = 0; i < images.length; i++) {
@@ -49,12 +55,6 @@
                 localStorage.setItem('visitedBefore', 'true');
             }
         };
-
-        function resetVisitedStatus() {
-            localStorage.setItem('visitedBefore', 'false');
-            alert('초기화되었습니다.');
-            location.reload();
-        }
     </script>
 
 </body>
