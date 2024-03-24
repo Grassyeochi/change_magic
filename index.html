@@ -15,6 +15,10 @@
         .image {
             display: none;
         }
+
+        #resetButton{
+            display: none;
+        }
     </style>
 </head>
 
@@ -25,9 +29,7 @@
     <!-- 이미지 B -->
     <img src="reverse_jh.jpg" alt="reverse" class="image" id="reverse_image">
 
-
-    <p><input type="number" name="reset"></p>
-    <p><button onclick="resetVisitedStatus()>???</buttom></p>
+    <p><button id ="resetButton" onclick="resetVisitedStatus()>초기화</buttom></p>
   <script>
         function showImage(imageId) {
             var images = document.getElementsByClassName('image');
@@ -41,6 +43,7 @@
             var visitedBefore = localStorage.getItem('visitedBefore');
             if (visitedBefore) {
                 showImage('reverse_image');
+                document.getElementById('resetButton').style.display = 'block';
             } else {
                 showImage('default_image');
                 localStorage.setItem('visitedBefore', 'true');
@@ -50,6 +53,7 @@
         function resetVisitedStatus() {
             localStorage.setItem('visitedBefore', 'false');
             alert('초기화되었습니다.');
+            location.reload();
         }
     </script>
 
