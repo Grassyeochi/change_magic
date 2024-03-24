@@ -1,5 +1,5 @@
 <!Doctype HTML>
-<html>
+<html lang="kr">
 
 <head>
   <title>환영 페이지</title>
@@ -11,10 +11,39 @@
   <meta property="og:image"              content="thumnail.jpg" />
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <style>
+        .image {
+            display: none;
+        }
+    </style>
 </head>
 
 <body style="text-align:center">
-  <img src="thmnalil.jpg" />
+    <!-- 이미지 A -->
+    <img src="thumnail.jpg" alt="default" class="image" id="default_image">
+
+    <!-- 이미지 B -->
+    <img src="reverse_jh.jpg" alt="reverse" class="image" id="reverse_image">
+
+  <script>
+        function showImage(imageId) {
+            var images = document.getElementsByClassName('image');
+            for (var i = 0; i < images.length; i++) {
+                images[i].style.display = 'none';
+            }
+            document.getElementById(imageId).style.display = 'block';
+        }
+
+        window.onload = function() {
+            var visitedBefore = localStorage.getItem('visitedBefore');
+            if (visitedBefore) {
+                showImage('reverse_image');
+            } else {
+                showImage('default_image');
+                localStorage.setItem('visitedBefore', 'true');
+            }
+        };
+    </script>
 
 </body>
 </html>
