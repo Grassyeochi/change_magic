@@ -49,7 +49,7 @@
 
         window.onload = function() {
             var visitedBefore = localStorage.getItem('visitedBefore');
-            if (visitedBefore) {
+            if (visitedBefore == 'true') {
                 showImage('reverse_image');
                 document.getElementById('resetButton').style.display = 'block';
             } else {
