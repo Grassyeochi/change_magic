@@ -18,7 +18,7 @@
             display: none;
         }
 
-        #resetButton, password_id{
+        #passwordField{
             display : none;
         }
     </style>
@@ -31,17 +31,15 @@
     <!-- 이미지 B -->
     <img src="reverse_jh.jpg" alt="reverse" class="image" id="reverse_image">
 
-    <form name="pwd">
+    <div id="passwordField">
         <input type="text" id="password_id">
-        <button id="resetbutton" onclick="resetVisitedStatus()">확인</button>
-    </form>
+        <button id="resetbutton" onclick="checkPassword()">확인</button>
+    </div>
+
   <script>
         function resetVisitedStatus() {
-            var p = document.getElementById("password_id").value;
-            if (p == "diamond_k"){
-                localStorage.setItem("visitedBefore", "false");
-                alert('초기화되었습니다.');
-            }
+            localStorage.setItem("visitedBefore", "false");
+            alert('초기화되었습니다.');
         }
         
         function showImage(imageId) {
@@ -52,12 +50,18 @@
             document.getElementById(imageId).style.display = "block";
         }
 
+        function checkPassword() {
+            var p = document.getElementById("password_id").value;
+            if (p == "diamond_k"){
+                resetVisitedStatus();
+            }
+        }
+
         window.onload = function() {
             var visitedBefore = localStorage.getItem("visitedBefore");
             if (visitedBefore == "true") {
                 showImage("reverse_image");
-                document.getElementById("password_id").style.display = "block";
-                document.getElementById("resetbutton").style.display = "block";
+                document.getElementById("passwordField").style.display = "block";
             } else {
                 showImage("default_image");
                 localStorage.setItem("visitedBefore", "true");
