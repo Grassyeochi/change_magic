@@ -18,8 +18,8 @@
             display: none;
         }
 
-        #resetButton{
-            display: none;
+        #resetButton, password_id{
+            display : none;
         }
     </style>
 </head>
@@ -37,29 +37,30 @@
     </form>
   <script>
         function resetVisitedStatus() {
-            var p = document.getElementById('password_id').value;
+            var p = document.getElementById("password_id").value;
             if (p == "diamond_k"){
-                localStorage.setItem('visitedBefore', 'false');
+                localStorage.setItem("visitedBefore", "false");
                 alert('초기화되었습니다.');
             }
         }
         
         function showImage(imageId) {
-            var images = document.getElementsByClassName('image');
+            var images = document.getElementsByClassName("image");
             for (var i = 0; i < images.length; i++) {
-                images[i].style.display = 'none';
+                images[i].style.display = "none";
             }
-            document.getElementById(imageId).style.display = 'block';
+            document.getElementById(imageId).style.display = "block";
         }
 
         window.onload = function() {
-            var visitedBefore = localStorage.getItem('visitedBefore');
-            if (visitedBefore == 'true') {
-                showImage('reverse_image');
-                document.getElementById('resetButton').style.display = 'block';
+            var visitedBefore = localStorage.getItem("visitedBefore");
+            if (visitedBefore == "true") {
+                showImage("reverse_image");
+                document.getElementById("password_id").style.display = "block";
+                document.getElementById("resetbutton").style.display = "block";
             } else {
-                showImage('default_image');
-                localStorage.setItem('visitedBefore', 'true');
+                showImage("default_image");
+                localStorage.setItem("visitedBefore", "true");
             }
         };
     </script>
